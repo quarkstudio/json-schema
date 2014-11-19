@@ -23,7 +23,7 @@ module JSON
           end
 
           if required?(property_schema, options) && !data.has_key?(property)
-            message = "The property '#{build_fragment(fragments)}' did not contain a required property of '#{property}'"
+            message = "The property '#{build_fragment(fragments)}' did not contain a required property of '#{property}' (#{File.basename __FILE__})"
             validation_error(processor, message, fragments, current_schema, self, options[:record_errors])
           end
 
@@ -67,7 +67,7 @@ module JSON
       # draft4 relies on its own RequiredAttribute validation at a higher level, rather than
       # as an attribute of individual properties.
       def self.required?(schema, options)
-        options[:strict] == true
+        false
       end
     end
   end

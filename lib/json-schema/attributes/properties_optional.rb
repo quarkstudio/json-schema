@@ -11,7 +11,7 @@ module JSON
           property = property.to_s
 
           if !property_schema['optional'] && !data.key?(property)
-            message = "The property '#{build_fragment(fragments)}' did not contain a required property of '#{property}'"
+            message = "The property '#{build_fragment(fragments)}' did not contain a required property of '#{property}' (#{File.basename __FILE__})"
             validation_error(processor, message, fragments, current_schema, self, options[:record_errors])
           end
 
